@@ -5,10 +5,35 @@ body {
     font-family: 'Lobster', cursive; /* Apply the Google Font */
 }
 
-.navbar {
+#menu-button {
+    display: none;
     background-color: CadetGrey;
-    text-align: center;
-    padding: 10px 0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.navbar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide the menu off-screen initially */
+    width: 200px;
+    background-color: CadetGrey;
+    height: 100%;
+    padding: 10px;
+    z-index: 2;
+    transition: left 0.3s;
+}
+
+.navbar.active {
+    left: 0; /* Show the menu when active */
 }
 
 .navbar ul {
@@ -18,8 +43,8 @@ body {
 }
 
 .navbar li {
-    display: inline;
-    margin: 0 15px;
+    display: block;
+    margin: 0 0 15px;
 }
 
 .navbar a {
@@ -105,5 +130,40 @@ img {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    #menu-button {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -250px; /* Hide the menu off-screen initially */
+        width: 200px;
+        background-color: CadetGrey;
+        height: 100%;
+        padding: 10px;
+        z-index: 2;
+        transition: left 0.3s;
+    }
+
+    .navbar.active {
+        left: 0; /* Show the menu when active */
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        padding: 0;
+        text-align: left;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 10px 0;
     }
 }
